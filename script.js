@@ -1,6 +1,6 @@
-
 // API FETCH (ASYNC AWAIT)
-const getData = async () => {
+
+  const getData = async () => {
 
   let request = await fetch("https://fakestoreapi.com/products");
 
@@ -8,24 +8,28 @@ const getData = async () => {
 
   const productList = document.getElementById("product-list");
 
-// UI MAKER (MAP METHOD)
+  // UI MAKER (MAP METHOD)
 
   response.map((product) => {
-    const productDiv = document.createElement("div");
 
-    productDiv.className = "product";
+    const productDiv = document.createElement("div");
+    
+    productDiv.className = "col";
 
     productDiv.innerHTML = `
-            <h2>${product.title}</h2>
-            <img src="${product.image}" alt="${product.title}">
-            <p>Price: $${product.price}</p>
-            <p>${product.description}</p>
-        `;
+      <div class="card h-100">
+        <img src="${product.image}" class="card-img-top" alt="${product.title}">
+        <div class="card-body">
+          <h5 class="card-title">${product.title}</h5>
+          <p class="card-text">Price: $${product.price}</p>
+          <p class="card-text">${product.description}</p>
+        </div>
+      </div>
+    `;
 
     productList.append(productDiv);
   });
 };
 
 // FUNCTION CALLING
-
 getData();
